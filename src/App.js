@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [val, setVal] = useState(0);
+  const [count, setCount] = useState("Please Write Something");
+
+
   return (
-    <div style={{width: 100, margin: "0 auto"}}>
-      
-      <div style={{width: 50, margin: "0 auto"}}>
+    <div>
         <h1>{count}</h1>
-        <input name="val" onChange={(e) => {
-            setVal(e.target.value)
-        }} placeholder="Enter Value"/>
-        </div>
-      <button onClick={() => {
-        setCount(parseInt(count)+parseInt(val));
-      }}>Click me </button>
+        <input name="val" onChange={(e) => addValue(e.target.value)} placeholder="Enter Value"/>
     </div>
   );
+
+
+
+  function addValue(val){
+    if(val === ''){
+        setCount("Please Write Something");
+    }else{
+        setCount(val);
+    }
+  }
 }
 
 export default App;
